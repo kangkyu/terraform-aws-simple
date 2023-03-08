@@ -12,17 +12,17 @@ This is a simple tool to deploy an EC2 instance, a RDS instance, and supporting 
 
 ### User Specific Secrets and Other Parameters
 
-1. Enter your Terraform back-end information in the 2 files, one for an Elastic IP and one for the rest of the resources. The reason I did it this way is because the back-end files will be copied to the deploy directory before executing `terraform` commands like `plan` and `apply`. Then this copy will be deleted after running each `terraform` command. The `terraform` commands are run using `make` so the copying and deletion of the back-end files are automatic. I didn't want to include the back-end settings in the deploy directories because different users will have different back-ends. Hence, the back-end source files are found in the `./user` directory.
+1. Enter your Terraform back-end information in the 2 files, one for an Elastic IP and one for the rest of the resources. The reason I did it this way is because the back-end files will be copied to the deploy directory before executing `terraform` commands like `plan` and `apply`. Then this copy will be deleted after running each `terraform` command. The `terraform` commands are run using `make` so the copying and deletion of the back-end files are automatic. I didn't want to include the back-end settings in the deploy directories because different users will have different back-ends. Hence, the back-end source files and other user specific files are found in the `./user` directory.
 
 2. Go back to the repo root directory.
 
 3. Create a secrets file. This file should ideally be outside this repo's directory. Information about what should be entered in the secrets file is found in the example secrets file. This is the file where you enter the name of the key/pair you created earlier.
 
-4. Edit `./user/path-to-secrets` and enter the path to the secrets file you created in step 6.
+4. Edit `./user/path-to-secrets` and enter the path to the secrets file you created in step 3.
 
 ### Configuration
 
-The `./config` directory contains Terraform var files. An example of a configuration item that you might want to change is `region` which is the AWS region you'd like to deploy the resources like `us-west-`.
+The `./config` directory contains Terraform var files. An example of a configuration item that you might want to change is `region` which is the AWS region you'd like to deploy the resources like `us-west-1`.
 
 ### Deploying the Elastic IP
 
